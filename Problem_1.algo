@@ -10,27 +10,27 @@ BEGIN
     somme <- 0;                 // Initialiser la somme 
 
     // Vérifier chaque élément de Ens1
-    FOR i FROM 1 TO length(Ens1) DO // Parcourir 
+    FOR i FROM 0 TO length(Ens1)-1 DO // Parcourir 
         existe <- FALSE;        // On suppose que l’élément n’est pas dans Ens2
-        FOR j FROM 1 TO length(Ens2) DO 
-            IF Ens1[i] = Ens2[j] THEN //Comparer
+        FOR j FROM 0 TO length(Ens2)-1 DO 
+            IF Ens1[i] == Ens2[j] THEN //Comparer
                 existe <- TRUE; // L’élément existe aussi dans Ens2
             END_IF
         END_FOR
-        IF NOT existe THEN
+        IF (existe == FALSE) THEN
             somme <- somme + Ens1[i];  // Ajouter l’élément distinct à la somme
         END_IF
     END_FOR
 
     // Vérifier chaque élément de Ens2
-    FOR i FROM 1 TO length(Ens2) DO
+    FOR i FROM 0 TO length(Ens2)-1 DO
         existe <- FALSE;        // On suppose que l’élément n’est pas dans Ens1
-        FOR j FROM 1 TO length(Ens1) DO
-            IF Ens2[i] = Ens1[j] THEN
+        FOR j FROM 0 TO length(Ens1)-1 DO
+            IF Ens2[i] == Ens1[j] THEN
                 existe <- TRUE; // L’élément existe aussi dans Ens1
             END_IF
         END_FOR
-        IF NOT existe THEN
+        IF (existe == FALSE) THEN
             somme <- somme + Ens2[i];  // Ajouter l’élément distinct à la somme
         END_IF
     END_FOR
