@@ -1,0 +1,39 @@
+ALGORITHM SommeDistincts 
+VAR
+    Ens1, Ens2 :ARRAY_OF INTEGER[5];         // Tableau: Deux ensembles
+    i, j, somme : INTEGER;      // Compteurs et somme
+    existe : BOOLEAN;           // Indique si l'élément existe déjà
+
+BEGIN
+    Ens1 <- [3, 1, 7, 9];       // Tableau: Premier ensemble
+    Ens2 <- [2, 4, 1, 9, 3];    // Tableau: Deuxième ensemble 
+    somme <- 0;                 // Initialiser la somme 
+
+    // Vérifier chaque élément de Ens1
+    FOR i FROM 1 TO length(Ens1) DO // Parcourir 
+        existe <- FALSE;        // On suppose que l’élément n’est pas dans Ens2
+        FOR j FROM 1 TO length(Ens2) DO 
+            IF Ens1[i] = Ens2[j] THEN //Comparer
+                existe <- TRUE; // L’élément existe aussi dans Ens2
+            END_IF
+        END_FOR
+        IF NOT existe THEN
+            somme <- somme + Ens1[i];  // Ajouter l’élément distinct à la somme
+        END_IF
+    END_FOR
+
+    // Vérifier chaque élément de Ens2
+    FOR i FROM 1 TO length(Ens2) DO
+        existe <- FALSE;        // On suppose que l’élément n’est pas dans Ens1
+        FOR j FROM 1 TO length(Ens1) DO
+            IF Ens2[i] = Ens1[j] THEN
+                existe <- TRUE; // L’élément existe aussi dans Ens1
+            END_IF
+        END_FOR
+        IF NOT existe THEN
+            somme <- somme + Ens2[i];  // Ajouter l’élément distinct à la somme
+        END_IF
+    END_FOR
+
+    Write "Résultat = ", somme;
+END

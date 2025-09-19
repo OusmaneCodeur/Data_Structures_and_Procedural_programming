@@ -1,0 +1,31 @@
+//Procedure pour calculer le produit scalaire 
+PROCEDURE dot_product(v1, v2, n, ps : INTEGER)
+VAR
+    i : INTEGER           // Compteur pour la boucle
+BEGIN
+    ps <- 0               // Initialiser le produit scalaire à 0
+
+    FOR i FROM 1 TO n DO          // Parcourir chaque composante du vecteur
+        ps <- v1[i] * v2[i] // Ajouter le produit des composantes correspondantes
+    END_FOR  
+END PROCEDURE 
+
+ALGORITHM Orthogonal
+VAR
+    v1, v2: ARRAY_OF INTEGER[1...100]; // Declaration des tableaux vecteurs
+    n, ps: INTEGER;  // Declaration de le taille (n) et du produit scalaire (ps)
+BEGIN
+    n <- 3              //taille de vecteur
+    v1 <- [1, 2, 3]     // Tableau: Premier vecteur
+    v2 <- [4, 5, 6]     // Tableau: Deuxieme vecteur
+    ps <- 0             // Initialisation du produit scalaire 
+
+    dot_product(v1, v2, n, ps : INTEGER) // Appel a la procedure 
+
+    IF ps=0 THEN // Condition pour voir si les produits sont orthogonaux ou pas 
+        Write "Les produits sont orthogonaux"
+    ELSE
+        Write "Les produits ne sont pas orthogonaux"   
+    END_IF
+
+END
